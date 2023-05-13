@@ -1,11 +1,15 @@
-const redux = require("redux");
+import { createStore } from "redux";
 
-const somefunc = (state, action) => {
-  if (action.type === "") {
-    //do something
-    return state;
+const counterReducer = (state = { counter: 0 }, action) => {
+  if (action.type === "increment") {
+    return { counter: state.counter + 1 };
+  }
+  if (action.type === "decrement") {
+    return { counter: state.counter - 1 };
   }
   return state;
 };
 
-const store = redux.createStore(somefunc);
+const store = createStore(counterReducer);
+
+export default store;
